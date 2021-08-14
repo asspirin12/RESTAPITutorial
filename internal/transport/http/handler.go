@@ -13,9 +13,9 @@ type Handler struct {
 }
 
 // NewHandler – returns a pointer to a Handler
-//func NewHandler() *Handler {
-//	return &Handler{}
-//}
+func NewHandler() *Handler {
+	return &Handler{}
+}
 
 // SetupRoutes – sets up all the routes for our application
 func (h *Handler) SetupRoutes() {
