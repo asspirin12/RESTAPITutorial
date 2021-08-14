@@ -1,4 +1,4 @@
-module RESTAPITutorial
+module github.com/asspirin12/RESTAPITutorial
 
 go 1.17
 
