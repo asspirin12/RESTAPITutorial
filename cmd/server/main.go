@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"net/http"
 
-	transportHTTP "github.com/TutorialEdge/go-rest-api-course/utils/transport/http"
-	"github.com/asspirin12/RESTAPITutorial/utils/database"
+	"github.com/asspirin12/RESTAPITutorial/internal/database"
+	transportHTTP "github.com/asspirin12/RESTAPITutorial/internal/transport/http"
 )
 
 // App struct which contains pointers to database connections
