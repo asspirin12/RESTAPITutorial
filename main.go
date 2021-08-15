@@ -3,14 +3,23 @@ package main
 import (
 	"fmt"
 	"net/http"
+
+	"github.com/asspirin12/RESTAPITutorial/internal/database"
 )
 import transportHTTP "github.com/asspirin12/RESTAPITutorial/internal/transport/http"
 
 // App struct which contains pointers to database connections
 type App struct{}
 
+// Run sets up our application
 func (a *App) Run() error {
 	fmt.Println("Setting up our API")
+
+	var err error
+	_, err = database.NewDataBase()
+	if err != nil {
+		return err
+	}
 
 	handler := transportHTTP.NewHandler()
 	handler.SetupRoutes()

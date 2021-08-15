@@ -1,0 +1,12 @@
+version: "3.8"
+
+services:
+
+  postgresql_12:
+    container_name: comments_api_db
+    ports:
+      - "5432:5432"
+    image: postgres:12-alpine
+    env_file: .env
+    healthcheck:
+      test: "exit 0"
