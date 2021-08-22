@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"net/http"
 
+	"github.com/asspirin12/RESTAPITutorial/internal/comment"
 	"github.com/asspirin12/RESTAPITutorial/internal/database"
 	transportHTTP "github.com/asspirin12/RESTAPITutorial/internal/transport/http"
 )
@@ -16,12 +17,19 @@ func (a *App) Run() error {
 	fmt.Println("Setting up our API")
 
 	var err error
-	_, err = database.NewDataBase()
+	db, err := database.NewDataBase()
 	if err != nil {
 		return err
 	}
 
-	handler := transportHTTP.NewHandler()
+	err = database.MigrateDB(db)
+	if err != nil {
+		return err
+	}
+
+	commentService := comment.NewService(db)
+
+	handler := transportHTTP.NewHandler(commentService)
 	handler.SetupRoutes()
 
 	if err := http.ListenAndServe(":8080", handler.Router); err != nil {
