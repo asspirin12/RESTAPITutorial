@@ -14,11 +14,11 @@ func NewDataBase() (*gorm.DB, error) {
 
 	fmt.Println("Setting up new database connection")
 
-	dbUsername := os.Getenv("POSTGRES_USER")
-	dbPassword := os.Getenv("POSTGRES_PASSWORD")
-	dbHost := os.Getenv("POSTGRES_HOST")
-	dbTable := os.Getenv("POSTGRES_TABLE")
-	dbPort := os.Getenv("POSTGRES_PORT")
+	dbUsername := os.Getenv("DB_USERNAME")
+	dbPassword := os.Getenv("DB_PASSWORD")
+	dbHost := os.Getenv("DB_HOST")
+	dbTable := os.Getenv("DB_TABLE")
+	dbPort := os.Getenv("DB_PORT")
 
 	connectString := fmt.Sprintf("host=%s port=%s user=%s dbname=%s password=%s sslmode=disable",
 		dbHost, dbPort, dbUsername, dbTable, dbPassword)
