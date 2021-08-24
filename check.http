@@ -7,13 +7,11 @@ Content-Type: application/json
 
 {"slug" : "/test-slug", "author" : "Sergey", "Body": "I love Goland"}
 ###
-PUT http://localhost:8080/api/comment/2
+PUT http://localhost:8080/api/comment/1
 Content-Type: application/json
 
 {"slug" : "/test-slug-updated", "author" : "admin", "Body": "I love GoLand"}
 ###
-DELETE http://localhost:8080/api/comment/2
+DELETE http://localhost:8080/api/comment/3
 ###
 GET localhost:8080/api/comment
-###
-POST localhost:8080/api/comment
