@@ -1,0 +1,37 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: comments-api
+spec:
+  replicas: 3
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  selector:
+    matchLabels:
+      name: comments-api
+  template:
+    metadata:
+      labels:
+        name: comments-api
+    spec:
+      containers:
+        - name: application
+          image: "asspirin12/comments-api:latest"
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+          env:
+          - name: DB_PORT
+            value: "5432"
+          - name: DB_HOST
+            value: "postgres-13-release-postgresql.default.svc.cluster.local"
+          - name: DB_PASSWORD
+            value: "."
+          - name: DB_TABLE
+            value: "comments-api"
+          - name: DB_USERNAME
+            value: "postgres"
