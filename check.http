@@ -1,0 +1,19 @@
+GET http://localhost:8080/api/health
+###
+GET localhost:8080/api/comment
+###
+POST http://localhost:8080/api/comment
+Content-Type: application/json
+
+{"slug" : "/test-slug", "author" : "Sergey", "Body": "I love Goland"}
+###
+PUT http://localhost:8080/api/comment/2
+Content-Type: application/json
+
+{"slug" : "/test-slug-updated", "author" : "admin", "Body": "I love GoLand"}
+###
+DELETE http://localhost:8080/api/comment/2
+###
+GET localhost:8080/api/comment
+###
+POST localhost:8080/api/comment
